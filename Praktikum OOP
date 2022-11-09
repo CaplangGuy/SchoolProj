@@ -1,0 +1,97 @@
+package bus;//Bus Class
+
+import java.util.Scanner;
+
+public class Bus{
+   Scanner sc  = new Scanner(System.in);
+    
+       private int penumpang;
+       private double maxPenumpang = 15;
+       private double counter;
+       private double berat;
+    
+    
+    public Bus(int maxpenumpang){
+        this.maxPenumpang=maxpenumpang;
+        penumpang = 0;
+    }
+    
+    public void addPenumpang (int penumpang)
+    {
+        double temp;
+        temp = this.penumpang+penumpang;
+        if (temp > maxPenumpang){
+        {System.out.println("==============================================");
+    System.out.println (" Penumpang melebihi kuota");
+    }
+        } else{
+        
+            this.penumpang = (int) temp;
+            counter = counter+1;
+        }
+            
+    }
+   
+   public void getAverage(int berat)
+   { 
+       int average;
+       average =(int) (this.berat+berat);
+       this.berat=average;
+       System.out.println("==============================================");
+       System.out.println("Berat penumpang : "+average+" KG");
+    }
+   public double getPenumpang(){
+       return this.penumpang;
+   }
+   
+   public void cetak (){
+       System.out.println ("Penumpang sekarang adalah : "+penumpang);
+       System.out.println("Maksimum penumpang adalah : "+maxPenumpang);
+       System.out.println("Berat rata-rata penumpang : "+this.berat/this.penumpang+" KG");
+       
+   }
+
+}
+
+
+
+
+//Uji bus Class
+
+package bus;
+
+import java.util.Scanner;
+
+
+public class ujiBus {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        Bus baru = new Bus(10);
+        boolean loop=true;
+        do {
+            
+            System.out.print("Masukkan penumpang : ");
+            int iPenumpang  = sc.nextInt();
+            System.out.print("berat Seluruh penumpang : ");
+            int iBeratPenumpang  = sc.nextInt();
+            baru.addPenumpang(iPenumpang);
+            baru.getAverage(iBeratPenumpang);
+            double penumpang = baru.getPenumpang();
+            System.out.println("Jumlah Penumpang : "+penumpang);
+            if(penumpang >= 10){
+                loop=false;
+            }
+        } while (loop);
+        
+        System.out.println (" \nPenambahan penumpang\n");
+        
+        
+        baru.cetak();
+       
+     
+    }
+    
+    }
+
